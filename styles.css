@@ -65,6 +65,20 @@ h1 span { background: var(--iridescent); background-clip: text; -webkit-backgrou
 .hero-stage { position: relative; z-index: 3; width: min(1030px, 100%); height: 620px; margin: 90px auto 0; }
 .device { position: absolute; overflow: hidden; background: #090a0b; border: 8px solid #151515; box-shadow: var(--shadow); }
 .device img { width: 100%; height: 100%; object-fit: cover; }
+.screen-filler { position: absolute; z-index: 2; color: #f4f4f7; pointer-events: none; }
+.workspace-filler { top: 27%; right: 5%; left: 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 0 5%; padding-top: 2.4%; border-top: 1px solid rgba(255,255,255,.08); }
+.workspace-filler > div { min-height: 74px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.workspace-filler span { display: block; margin-bottom: 8px; color: #85858d; font-size: 12px; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.workspace-filler strong { color: #d4d4d8; font-size: 16px; font-weight: 450; line-height: 1.4; }
+.workspace-filler i { display: inline-flex; margin: 0 5px 5px 0; padding: 5px 8px; border-radius: 7px; color: #b9d8ff; background: rgba(8,122,255,.16); font-size: 11px; font-style: normal; font-weight: 650; }
+.contacts-filler { top: 36.8%; right: 4%; left: 4%; }
+.contacts-filler > div { display: flex; min-height: 8.3%; padding: 4.1% 0; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(255,255,255,.11); }
+.contacts-filler strong { font-size: clamp(5px, 1.34vw, 14px); font-weight: 480; letter-spacing: -.015em; }
+.contacts-filler span { margin-top: 2px; color: #77777d; font-size: clamp(4px, 1vw, 11px); }
+.contact-filler { top: 31%; right: 5.2%; left: 5.2%; }
+.contact-filler > div { padding: 8.5% 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.contact-filler span { display: block; margin-bottom: 3.5%; color: #909097; font-size: clamp(4px, .75vw, 10px); font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.contact-filler strong { display: block; overflow: hidden; color: #dedee2; font-size: clamp(5px, 1vw, 13px); font-weight: 430; white-space: nowrap; text-overflow: ellipsis; }
 .device-tablet { left: 50%; top: 40px; width: min(760px, 74vw); aspect-ratio: 4/3; transform: translateX(-50%) perspective(1800px) rotateX(4deg); border-radius: 32px; }
 .device-phone { right: 3%; top: 0; width: min(245px, 24vw); aspect-ratio: 1320/2868; border-radius: 42px; border-width: 7px; transform: rotate(5deg); }
 .account-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 9px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.8); border-radius: 15px; background: rgba(255,255,255,.82); box-shadow: 0 15px 40px rgba(0,0,0,.12); backdrop-filter: blur(18px); font-size: 14px; font-weight: 650; }
@@ -124,6 +138,7 @@ kbd { padding: 4px 7px; border: 1px solid #484b52; border-radius: 6px; color: #8
 .account-visuals { position: relative; min-height: 760px; }
 .floating-shot { position: absolute; overflow: hidden; margin: 0; background: #0a0a0b; box-shadow: var(--shadow); }
 .floating-shot img { width: 100%; height: 100%; object-fit: cover; }
+.floating-shot .contact-filler { top: 31%; }
 .floating-shot figcaption { position: absolute; left: 14px; bottom: 14px; padding: 8px 11px; border-radius: 9px; color: #fff; background: rgba(0,0,0,.65); backdrop-filter: blur(10px); font-size: 12px; }
 .shot-one { top: 0; right: 0; width: 82%; aspect-ratio: 3/4; border: 7px solid #171717; border-radius: 30px; transform: rotate(3deg); }
 .shot-two { z-index: 2; bottom: 10px; left: 0; width: 39%; aspect-ratio: 1320/2868; border: 6px solid #111; border-radius: 34px; transform: rotate(-5deg); }
@@ -224,6 +239,7 @@ details li { margin: 9px 0; padding-left: 8px; }
 .screen-river { position: absolute; top: 80px; right: -6vw; width: 54vw; height: 1000px; }
 .river-item { position: absolute; overflow: hidden; margin: 0; border: 7px solid #101112; background: #101112; box-shadow: 0 40px 90px rgba(0,26,68,.4); }
 .river-item img { width: 100%; height: 100%; object-fit: cover; }
+.river-item .contact-filler { top: 31%; }
 .river-item.phone { width: 210px; aspect-ratio: 1320/2868; border-radius: 36px; }
 .river-item.tablet { width: min(500px, 36vw); aspect-ratio: 3/4; border-radius: 30px; }
 .river-item:nth-child(1) { z-index: 2; top: 380px; left: 0; transform: rotate(-8deg); }
@@ -287,7 +303,7 @@ footer nav { display: flex; justify-self: end; gap: 22px; }
   .hero { min-height: 840px; padding: 130px 20px 0; }
   h1 { font-size: clamp(52px, 16vw, 72px); }
   .lede { font-size: 18px; }.hero-actions { flex-direction: column; gap: 18px; }
-  .hero-stage { height: 360px; margin-top: 58px; }.device-tablet { width: 105vw; border-radius: 20px; border-width: 5px; }.device-phone { top: 15px; right: -7px; width: 31vw; border-radius: 25px; border-width: 4px; }
+  .hero-stage { height: 360px; margin-top: 58px; }.device-tablet { width: 105vw; border-radius: 20px; border-width: 5px; }.device-phone { top: 15px; right: -7px; width: 31vw; border-radius: 25px; border-width: 4px; }.workspace-filler > div { min-height: 45px; padding: 6px 0; }.workspace-filler span { margin-bottom: 4px; font-size: 6px; }.workspace-filler strong { font-size: 8px; }.workspace-filler i { padding: 3px 5px; font-size: 5px; }
   .account-chip { display: none; }
   .manifesto { min-height: 650px; }
   .speed-section { min-height: 1000px; }.performance { gap: 24px; }.performance strong { font-size: 24px; }.search-demo { padding: 12px; border-radius: 20px; }.result-row { grid-template-columns: 38px 1fr; }.result-account { display: none; }
