@@ -122,6 +122,7 @@ kbd { padding: 4px 7px; border: 1px solid #484b52; border-radius: 6px; color: #8
 .shot-two { z-index: 2; bottom: 10px; left: 0; width: 39%; aspect-ratio: 1320/2868; border: 6px solid #111; border-radius: 34px; transform: rotate(-5deg); }
 
 .feature-intro { padding-bottom: 70px; text-align: center; }
+.feature-intro-copy { max-width: 720px; margin: 28px auto 0; color: var(--muted); font-size: 20px; line-height: 1.5; letter-spacing: -.02em; }
 .feature-story { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 0; }
 .feature-card { position: relative; min-height: 650px; padding: 44px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
 .feature-card-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; background: #dff5e9; }
