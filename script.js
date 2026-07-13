@@ -121,6 +121,17 @@ document.addEventListener("keydown", event => {
 renderResults();
 updateScrollEffects();
 
+document.querySelectorAll("[data-group-toggle]").forEach(button => {
+  button.addEventListener("click", () => {
+    const isMember = button.getAttribute("aria-pressed") === "true";
+    button.setAttribute("aria-pressed", String(!isMember));
+    const status = button.closest("[data-inline-groups]")?.querySelector("[data-group-status]");
+    if (status) {
+      status.textContent = `${isMember ? "Removed from" : "Added to"} ${button.dataset.groupToggle}`;
+    }
+  });
+});
+
 const launcherDemo = document.querySelector("[data-launcher-demo]");
 const launcherInput = launcherDemo.querySelector("[data-launcher-input]");
 const launcherResults = launcherDemo.querySelector("[data-launcher-results]");

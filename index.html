@@ -75,7 +75,7 @@
           "https://supersimplecontacts.com/assets/screenshots/iphone-search.png",
           "https://supersimplecontacts.com/assets/screenshots/iphone-rich-contact.png",
           "https://supersimplecontacts.com/assets/screenshots/iphone-editor.png",
-          "https://supersimplecontacts.com/assets/screenshots/ipad-smart-groups.png"
+          "https://supersimplecontacts.com/assets/screenshots/02-contact-editor.png"
         ],
         "applicationCategory": "ProductivityApplication",
         "applicationSubCategory": "Contact manager and address book",
@@ -84,6 +84,7 @@
         "description": "A fast, private contacts app for Mac, iPhone, and iPad with Apple Contacts integration plus Google Contacts and Microsoft contact sync.",
         "featureList": [
           "Instant on-device contact search",
+          "Inline group membership editing on contact cards",
           "Apple Contacts integration",
           "Google Contacts sync",
           "Microsoft personal and work contact sync",
@@ -265,13 +266,44 @@
       <article class="feature-card feature-card-wide reveal" data-parallax="-0.08" data-parallax-x="-0.02">
         <div class="feature-copy">
           <span class="feature-number">01</span>
-          <h3>Make groups do the work.</h3>
-          <p>Create standard groups for direct control and nested smart groups that update from your rules. Save structured searches, then move hundreds of people with bulk membership tools.</p>
+          <h3>Groups, right on the contact card.</h3>
+          <p>Add or remove a person from any standard group right where you are viewing them. No separate edit screen, no group browser, no lost context. One click updates membership in place.</p>
         </div>
-        <figure class="group-screenshot">
-          <div class="group-screenshot-frame"><img src="assets/screenshots/ipad-smart-groups.png" alt="The Design smart group selected with seven matching contacts on iPad" loading="lazy"></div>
-          <figcaption><strong>Smart group: Design</strong><span>7 matching contacts, updated automatically</span></figcaption>
-        </figure>
+        <div class="inline-groups-demo" data-inline-groups>
+          <div class="contact-card-toolbar">
+            <span>Contact card</span>
+            <span class="contact-save-state"><i aria-hidden="true"></i> Saved</span>
+          </div>
+          <div class="inline-contact">
+            <div class="inline-contact-identity">
+              <span class="inline-contact-avatar" aria-hidden="true">AJ</span>
+              <div>
+                <h4>Amara Johnson</h4>
+                <p>Bloom Foundation</p>
+              </div>
+            </div>
+            <dl class="inline-contact-details">
+              <div><dt>Email</dt><dd>amara@bloom.org</dd></div>
+              <div><dt>Phone</dt><dd>+1 604 555 0127</dd></div>
+            </dl>
+            <div class="inline-group-editor">
+              <div class="inline-group-heading">
+                <span>Groups</span>
+                <small>Inline</small>
+              </div>
+              <p>Click a group to add or remove it.</p>
+              <div class="inline-group-pills" aria-label="Group membership">
+                <button type="button" aria-pressed="true" data-group-toggle="Favorites"><span aria-hidden="true">✓</span> Favorites</button>
+                <button type="button" aria-pressed="true" data-group-toggle="Work"><span aria-hidden="true">✓</span> Work</button>
+                <button type="button" aria-pressed="true" data-group-toggle="Design Team"><span aria-hidden="true">✓</span> Design Team</button>
+                <button type="button" aria-pressed="false" data-group-toggle="Clients"><span aria-hidden="true">✓</span> Clients</button>
+                <button type="button" aria-pressed="false" data-group-toggle="Vancouver"><span aria-hidden="true">✓</span> Vancouver</button>
+              </div>
+              <p class="inline-group-status" data-group-status role="status" aria-live="polite">3 groups on this contact</p>
+            </div>
+          </div>
+          <p class="inline-demo-note"><span aria-hidden="true"></span> Membership updates as you click</p>
+        </div>
       </article>
 
       <article class="feature-card duplicate-card reveal" data-parallax="0.14" data-parallax-x="-0.025" data-parallax-rotate="-0.003">
@@ -324,6 +356,7 @@
         <details>
           <summary><span>03</span> Groups and data quality</summary>
           <ul>
+            <li>Add or remove group membership inline from any contact card on Mac, iPhone, and iPad</li>
             <li>Standard groups, nested smart-group rules, and saved searches</li>
             <li>Drag-and-drop and bulk group membership changes</li>
             <li>Reviewable duplicate detection with local-link, keep-both, and never-match decisions</li>
@@ -410,8 +443,8 @@
           <figcaption>Mac workspace</figcaption>
         </figure>
         <figure class="river-item tablet" data-parallax="0.15" data-parallax-x="0.04" data-parallax-rotate="0.005">
-          <img src="assets/screenshots/ipad-smart-groups.png" alt="Smart groups in Super Simple Contacts on iPad" loading="lazy">
-          <figcaption>iPad groups</figcaption>
+          <img src="assets/screenshots/02-contact-editor.png" alt="Full contact editing in Super Simple Contacts on iPad" loading="lazy">
+          <figcaption>iPad editor</figcaption>
         </figure>
         <figure class="river-item phone" data-parallax="-0.27" data-parallax-x="0.07" data-parallax-rotate="0.01">
           <img src="assets/screenshots/iphone-editor.png" alt="Complete contact editing on iPhone" loading="lazy">
