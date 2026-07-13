@@ -237,6 +237,43 @@
       </div>
     </section>
 
+    <section class="launcher-section section-pad" id="launchers">
+      <div class="launcher-copy reveal">
+        <p class="section-kicker light">Your launcher just learned everyone</p>
+        <h2>Shortcut in.<br>Contact found.</h2>
+        <p>Search the same private local index from Raycast or Alfred. Find a person, copy a detail, start an email or call, and open the full contact without breaking your flow.</p>
+        <div class="launcher-switch" aria-label="Choose launcher preview">
+          <button type="button" data-launcher-mode="raycast" aria-pressed="true"><img src="assets/raycast-icon.png" alt="">Raycast</button>
+          <button type="button" data-launcher-mode="alfred" aria-pressed="false"><img src="assets/alfred-icon.png" alt="">Alfred</button>
+        </div>
+        <p class="launcher-privacy"><span>●</span> No second contact database. No provider credentials.</p>
+      </div>
+      <div class="launcher-stage reveal" data-launcher-demo>
+        <div class="launcher-glow" data-parallax="0.045"></div>
+        <div class="launcher-window">
+          <div class="launcher-search">
+            <img data-launcher-icon src="assets/raycast-icon.png" alt="">
+            <label>
+              <span class="sr-only">Search contacts from the launcher preview</span>
+              <input data-launcher-input type="search" value="grace" autocomplete="off" spellcheck="false" aria-describedby="launcher-speed">
+            </label>
+            <kbd data-launcher-shortcut>⌘ Space</kbd>
+          </div>
+          <div class="launcher-meta">
+            <span data-launcher-name>Super Simple Contacts for Raycast</span>
+            <span id="launcher-speed"><b data-launcher-time>0.4</b> ms local</span>
+          </div>
+          <div class="launcher-results" data-launcher-results aria-live="polite"></div>
+          <div class="launcher-footer">
+            <span><kbd>↵</kbd> Open contact</span>
+            <span><kbd>⌘ C</kbd> Copy</span>
+            <span><kbd>⌘ E</kbd> Email</span>
+            <span><kbd>⌘ ⇧ C</kbd> Call</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="screens-section section-pad">
       <div class="screens-copy reveal">
         <p class="section-kicker light">Made for each Apple screen</p>

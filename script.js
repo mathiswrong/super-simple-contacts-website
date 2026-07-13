@@ -106,3 +106,96 @@ document.addEventListener("keydown", event => {
 
 renderResults();
 updateScrollEffects();
+
+const launcherDemo = document.querySelector("[data-launcher-demo]");
+const launcherInput = launcherDemo.querySelector("[data-launcher-input]");
+const launcherResults = launcherDemo.querySelector("[data-launcher-results]");
+const launcherTime = launcherDemo.querySelector("[data-launcher-time]");
+const launcherIcon = launcherDemo.querySelector("[data-launcher-icon]");
+const launcherName = launcherDemo.querySelector("[data-launcher-name]");
+const launcherShortcut = launcherDemo.querySelector("[data-launcher-shortcut]");
+const launcherModes = document.querySelectorAll("[data-launcher-mode]");
+const launcherQueries = ["grace", "nasa", "analytical", "microsoft"];
+let launcherQueryIndex = 0;
+let launcherTimer;
+let launcherIsManual = false;
+
+function renderLauncherResults() {
+  const started = performance.now();
+  const query = launcherInput.value.trim().toLowerCase();
+  const found = contacts.filter(contact => `${contact.name} ${contact.detail} ${contact.account} ${contact.tags}`.toLowerCase().includes(query)).slice(0, 4);
+  launcherResults.replaceChildren();
+
+  if (!found.length) {
+    const empty = document.createElement("div");
+    empty.className = "launcher-empty";
+    empty.textContent = "No sample contacts found";
+    launcherResults.append(empty);
+  } else {
+    found.forEach((contact, index) => {
+      const row = document.createElement("div");
+      row.className = `launcher-result${index === 0 ? " is-selected" : ""}`;
+      const avatar = document.createElement("span");
+      avatar.className = "launcher-result-avatar";
+      avatar.textContent = initials(contact.name);
+      const copy = document.createElement("span");
+      copy.className = "launcher-result-copy";
+      const name = document.createElement("strong");
+      name.textContent = contact.name;
+      const detail = document.createElement("span");
+      detail.textContent = contact.detail;
+      copy.append(name, detail);
+      const account = document.createElement("span");
+      account.className = "launcher-result-account";
+      account.textContent = contact.account;
+      row.append(avatar, copy, account);
+      launcherResults.append(row);
+    });
+  }
+
+  launcherTime.textContent = Math.max(0.1, performance.now() - started).toFixed(1);
+}
+
+function scheduleLauncherPreview() {
+  if (reduceMotion || launcherIsManual) return;
+  window.clearTimeout(launcherTimer);
+  const nextQuery = launcherQueries[launcherQueryIndex % launcherQueries.length];
+  launcherQueryIndex += 1;
+  let position = 0;
+  launcherInput.value = "";
+  renderLauncherResults();
+
+  function typeNext() {
+    if (launcherIsManual) return;
+    if (position < nextQuery.length) {
+      launcherInput.value += nextQuery[position];
+      position += 1;
+      renderLauncherResults();
+      launcherTimer = window.setTimeout(typeNext, 72);
+    } else {
+      launcherTimer = window.setTimeout(scheduleLauncherPreview, 1750);
+    }
+  }
+
+  launcherTimer = window.setTimeout(typeNext, 300);
+}
+
+launcherInput.addEventListener("input", () => {
+  launcherIsManual = true;
+  window.clearTimeout(launcherTimer);
+  renderLauncherResults();
+});
+
+launcherModes.forEach(button => {
+  button.addEventListener("click", () => {
+    const isRaycast = button.dataset.launcherMode === "raycast";
+    launcherModes.forEach(mode => mode.setAttribute("aria-pressed", String(mode === button)));
+    launcherIcon.src = isRaycast ? "assets/raycast-icon.png" : "assets/alfred-icon.png";
+    launcherName.textContent = isRaycast ? "Super Simple Contacts for Raycast" : "Super Simple Contacts for Alfred";
+    launcherShortcut.textContent = isRaycast ? "⌘ Space" : "⌥ Space";
+    launcherInput.focus();
+  });
+});
+
+renderLauncherResults();
+scheduleLauncherPreview();
