@@ -128,11 +128,15 @@ const launcherTime = launcherDemo.querySelector("[data-launcher-time]");
 const launcherIcon = launcherDemo.querySelector("[data-launcher-icon]");
 const launcherName = launcherDemo.querySelector("[data-launcher-name]");
 const launcherShortcut = launcherDemo.querySelector("[data-launcher-shortcut]");
+const launcherWindow = launcherDemo.querySelector("[data-launcher-window]");
+const launcherPrefix = launcherDemo.querySelector("[data-launcher-prefix]");
+const launcherActions = [...launcherDemo.querySelectorAll("[data-launcher-action]")];
 const launcherModes = document.querySelectorAll("[data-launcher-mode]");
 const launcherQueries = ["grace", "nasa", "analytical", "microsoft"];
 let launcherQueryIndex = 0;
 let launcherTimer;
 let launcherIsManual = false;
+let launcherMode = "raycast";
 
 function renderLauncherResults() {
   const started = performance.now();
@@ -149,19 +153,24 @@ function renderLauncherResults() {
     found.forEach((contact, index) => {
       const row = document.createElement("div");
       row.className = `launcher-result${index === 0 ? " is-selected" : ""}`;
-      const avatar = document.createElement("span");
+      const avatar = document.createElement(launcherMode === "alfred" ? "img" : "span");
       avatar.className = "launcher-result-avatar";
-      avatar.textContent = initials(contact.name);
+      if (launcherMode === "alfred") {
+        avatar.src = "assets/app-icon.png";
+        avatar.alt = "";
+      } else {
+        avatar.textContent = initials(contact.name);
+      }
       const copy = document.createElement("span");
       copy.className = "launcher-result-copy";
       const name = document.createElement("strong");
       name.textContent = contact.name;
       const detail = document.createElement("span");
-      detail.textContent = contact.detail;
+      detail.textContent = launcherMode === "alfred" ? contact.detail : contact.detail.split("·")[0].trim();
       copy.append(name, detail);
       const account = document.createElement("span");
       account.className = "launcher-result-account";
-      account.textContent = contact.account;
+      account.textContent = launcherMode === "alfred" ? (index === 0 ? "↩" : String(index + 1)) : contact.detail.split("·").at(-1).trim();
       row.append(avatar, copy, account);
       launcherResults.append(row);
     });
@@ -203,10 +212,24 @@ launcherInput.addEventListener("input", () => {
 launcherModes.forEach(button => {
   button.addEventListener("click", () => {
     const isRaycast = button.dataset.launcherMode === "raycast";
+    launcherMode = isRaycast ? "raycast" : "alfred";
     launcherModes.forEach(mode => mode.setAttribute("aria-pressed", String(mode === button)));
+    launcherWindow.classList.toggle("mode-raycast", isRaycast);
+    launcherWindow.classList.toggle("mode-alfred", !isRaycast);
+    launcherPrefix.hidden = isRaycast;
     launcherIcon.src = isRaycast ? "assets/raycast-icon.png" : "assets/alfred-icon.png";
-    launcherName.textContent = isRaycast ? "Super Simple Contacts for Raycast" : "Super Simple Contacts for Alfred";
-    launcherShortcut.textContent = isRaycast ? "⌘ Space" : "⌥ Space";
+    launcherName.textContent = isRaycast ? "Search Super Simple Contacts · Raycast" : "cp · Super Simple Contacts workflow";
+    launcherShortcut.textContent = "⌥ Space";
+    const actionCopy = isRaycast
+      ? ["↵|Open in Super Simple Contacts", "⌘ K|Actions", "⌘ C|Copy Email", "|Call"]
+      : ["↩|Open contact", "⌘ ↩|Email", "⌥ ↩|Call", "⌘ C|Copy"];
+    launcherActions.forEach((action, index) => {
+      const [keys, label] = actionCopy[index].split("|");
+      action.hidden = !keys;
+      action.querySelector("kbd").textContent = keys;
+      action.lastChild.textContent = ` ${label}`;
+    });
+    renderLauncherResults();
     launcherInput.focus();
   });
 });

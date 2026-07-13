@@ -250,25 +250,26 @@
       </div>
       <div class="launcher-stage reveal" data-launcher-demo>
         <div class="launcher-glow" data-parallax="0.34" data-parallax-x="-0.09" data-parallax-rotate="0.014"></div>
-        <div class="launcher-window" data-parallax="-0.12" data-parallax-x="0.035" data-parallax-rotate="0.002">
+        <div class="launcher-window mode-raycast" data-launcher-window data-parallax="-0.12" data-parallax-x="0.035" data-parallax-rotate="0.002">
           <div class="launcher-search">
             <img data-launcher-icon src="assets/raycast-icon.png" alt="">
+            <span class="launcher-prefix" data-launcher-prefix hidden>cp</span>
             <label>
               <span class="sr-only">Search contacts from the launcher preview</span>
               <input data-launcher-input type="search" value="grace" autocomplete="off" spellcheck="false" aria-describedby="launcher-speed">
             </label>
-            <kbd data-launcher-shortcut>⌘ Space</kbd>
+            <kbd data-launcher-shortcut>⌥ Space</kbd>
           </div>
           <div class="launcher-meta">
-            <span data-launcher-name>Super Simple Contacts for Raycast</span>
+            <span data-launcher-name>Search Super Simple Contacts · Raycast</span>
             <span id="launcher-speed"><b data-launcher-time>0.4</b> ms local</span>
           </div>
           <div class="launcher-results" data-launcher-results aria-live="polite"></div>
           <div class="launcher-footer">
-            <span><kbd>↵</kbd> Open contact</span>
-            <span><kbd>⌘ C</kbd> Copy</span>
-            <span><kbd>⌘ E</kbd> Email</span>
-            <span><kbd>⌘ ⇧ C</kbd> Call</span>
+            <span data-launcher-action="primary"><kbd>↵</kbd> Open in Super Simple Contacts</span>
+            <span data-launcher-action="secondary"><kbd>⌘ K</kbd> Actions</span>
+            <span data-launcher-action="tertiary"><kbd>⌘ C</kbd> Copy Email</span>
+            <span data-launcher-action="fourth" hidden><kbd>⌥ ↩</kbd> Call</span>
           </div>
         </div>
       </div>
