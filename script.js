@@ -31,12 +31,26 @@ function updateScrollEffects() {
   header.classList.toggle("is-scrolled", scrollY > 30);
   if (!reduceMotion) {
     const viewMiddle = scrollY + window.innerHeight / 2;
+    const verticalLimit = window.innerWidth < 650 ? 135 : Math.min(240, window.innerHeight * 0.3);
+    const horizontalLimit = window.innerWidth < 650 ? 0 : 105;
+    const rotationLimit = window.innerWidth < 650 ? 0 : 9;
     parallaxItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      const itemMiddle = scrollY + rect.top + rect.height / 2;
+      let itemTop = 0;
+      let offsetNode = item;
+      while (offsetNode) {
+        itemTop += offsetNode.offsetTop;
+        offsetNode = offsetNode.offsetParent;
+      }
+      const itemMiddle = itemTop + item.offsetHeight / 2;
       const speed = Number(item.dataset.parallax);
-      const offset = Math.max(-90, Math.min(90, (viewMiddle - itemMiddle) * speed));
-      item.style.setProperty("translate", `0 ${offset}px`);
+      const horizontalSpeed = Number(item.dataset.parallaxX || 0);
+      const rotateSpeed = Number(item.dataset.parallaxRotate || 0);
+      const distance = viewMiddle - itemMiddle;
+      const offsetY = Math.max(-verticalLimit, Math.min(verticalLimit, distance * speed));
+      const offsetX = Math.max(-horizontalLimit, Math.min(horizontalLimit, distance * horizontalSpeed));
+      const rotation = Math.max(-rotationLimit, Math.min(rotationLimit, distance * rotateSpeed));
+      item.style.setProperty("translate", `${offsetX}px ${offsetY}px`);
+      item.style.setProperty("rotate", `${rotation}deg`);
     });
   }
   framePending = false;

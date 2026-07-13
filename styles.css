@@ -237,7 +237,7 @@ footer nav { display: flex; justify-self: end; gap: 22px; }
 
 .reveal { opacity: 0; transform: translateY(35px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
-[data-parallax] { will-change: transform; }
+[data-parallax] { transform-origin: center; will-change: transform, translate, rotate; }
 
 @media (max-width: 900px) {
   .site-header { grid-template-columns: 1fr auto; }.site-header nav { display: none; }
@@ -280,6 +280,6 @@ footer nav { display: flex; justify-self: end; gap: 22px; }
 @media (prefers-reduced-motion: reduce) {
   :root { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  [data-parallax] { transform: none !important; }
+  [data-parallax] { translate: none !important; rotate: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
