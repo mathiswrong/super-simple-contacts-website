@@ -59,9 +59,9 @@ h1 span { background: var(--iridescent); background-clip: text; -webkit-backgrou
 .lede { max-width: 690px; margin: 32px auto 0; color: var(--muted); font-size: clamp(20px, 2vw, 25px); line-height: 1.45; letter-spacing: -.025em; }
 .hero-actions { display: flex; justify-content: center; align-items: center; gap: 26px; margin-top: 34px; }
 .fine-print { margin: 16px 0 0; color: #8b8b87; font-size: 13px; }
-.orb { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .62; pointer-events: none; }
-.orb-one { top: 220px; left: -130px; width: 390px; height: 390px; background: radial-gradient(circle at 65% 35%, #8fdcff, #275bff 48%, #4b35d6 64%, transparent 72%); }
-.orb-two { top: 490px; right: -160px; width: 450px; height: 450px; background: radial-gradient(circle at 35% 30%, #ffb895, #f04284 40%, #843de2 64%, transparent 72%); }
+.orb { position: absolute; border-radius: 46% 54% 62% 38% / 42% 38% 62% 58%; filter: blur(30px) saturate(125%); opacity: .38; pointer-events: none; mix-blend-mode: multiply; }
+.orb-one { top: 180px; left: -290px; width: 650px; height: 470px; background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.72), transparent 16%), conic-gradient(from 225deg, #087aff, #504cf0 27%, #b83ed7 49%, #ef3f82 68%, #ff7a2f 84%, #087aff); }
+.orb-two { top: 420px; right: -320px; width: 710px; height: 520px; border-radius: 58% 42% 36% 64% / 47% 61% 39% 53%; background: radial-gradient(circle at 62% 28%, rgba(255,255,255,.68), transparent 15%), conic-gradient(from 45deg, #ff7a2f, #ef3f82 24%, #b83ed7 48%, #504cf0 70%, #087aff 88%, #ff7a2f); }
 .hero-stage { position: relative; z-index: 3; width: min(1030px, 100%); height: 620px; margin: 90px auto 0; }
 .device { position: absolute; overflow: hidden; background: #090a0b; border: 8px solid #151515; box-shadow: var(--shadow); }
 .device img { width: 100%; height: 100%; object-fit: cover; }
