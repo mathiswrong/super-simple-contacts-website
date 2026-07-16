@@ -1,12 +1,12 @@
 const contacts = [
-  { name: "Ada Lovelace", detail: "Analytical Engines · ada@example.com", account: "Google", tags: "ada analytical engines example mathematician google work +16045550101" },
-  { name: "Grace Hopper", detail: "US Navy · grace@example.com", account: "Microsoft", tags: "grace hopper navy compiler microsoft work" },
-  { name: "Katherine Johnson", detail: "NASA · katherine@example.com", account: "Apple", tags: "katherine johnson nasa apple space favorites" },
-  { name: "Margaret Hamilton", detail: "Apollo Software · margaret@example.com", account: "Google", tags: "margaret hamilton apollo software google engineering" },
-  { name: "Alan Turing", detail: "Bletchley Park · alan@example.com", account: "Microsoft", tags: "alan turing bletchley park microsoft research" },
-  { name: "Hedy Lamarr", detail: "Inventors · hedy@example.com", account: "Apple", tags: "hedy lamarr inventors apple wireless" },
-  { name: "Radia Perlman", detail: "Network Engineering · radia@example.com", account: "Google", tags: "radia perlman network engineering google" },
-  { name: "Evelyn Boyd Granville", detail: "IBM · evelyn@example.com", account: "Microsoft", tags: "evelyn boyd granville ibm microsoft mathematician" }
+  { name: "Arden Vale", detail: "Copper Kite Studio · arden.vale@example.com", account: "Google", tags: "arden vale copper kite studio creative director google work +16045550101" },
+  { name: "Briar Calder", detail: "Orbit & Oak · briar.calder@example.com", account: "Microsoft", tags: "briar calder orbit oak product microsoft work" },
+  { name: "Cleo Marlow", detail: "Paper Lantern Labs · cleo.marlow@example.com", account: "Apple", tags: "cleo marlow paper lantern labs apple design favorites" },
+  { name: "Dax Everly", detail: "Cloudberry House · dax.everly@example.com", account: "Google", tags: "dax everly cloudberry house google founder" },
+  { name: "Elara Finch", detail: "Blue Finch Research · elara.finch@example.com", account: "Microsoft", tags: "elara finch blue research microsoft" },
+  { name: "Felix Rowan", detail: "Copper Kite Studio · felix.rowan@example.com", account: "Apple", tags: "felix rowan copper kite apple design systems" },
+  { name: "Greta Hollis", detail: "Mossline Coffee · greta.hollis@example.com", account: "Google", tags: "greta hollis mossline coffee google owner" },
+  { name: "Imani Sable", detail: "Bright Thread Co · imani.sable@example.com", account: "Microsoft", tags: "imani sable bright thread microsoft community" }
 ];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -143,7 +143,7 @@ const launcherWindow = launcherDemo.querySelector("[data-launcher-window]");
 const launcherPrefix = launcherDemo.querySelector("[data-launcher-prefix]");
 const launcherActions = [...launcherDemo.querySelectorAll("[data-launcher-action]")];
 const launcherModes = document.querySelectorAll("[data-launcher-mode]");
-const launcherQueries = ["grace", "nasa", "analytical", "microsoft"];
+const launcherQueries = ["arden", "design", "copper", "microsoft"];
 let launcherQueryIndex = 0;
 let launcherTimer;
 let launcherIsManual = false;
