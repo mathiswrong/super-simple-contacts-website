@@ -127,7 +127,7 @@
             "name": "Can I search contacts from Raycast or Alfred?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Optional Raycast and Alfred integrations search the same private local index so you can find a person, copy a detail, start an email or call, and open a contact from your Mac launcher."
+              "text": "Yes. Optional, access-key-protected Raycast and Alfred integrations search the same on-device contact index so you can find a person, copy a detail, start an email or call, and open a contact from your Mac launcher."
             }
           }
         ]
@@ -384,8 +384,9 @@
         <details>
           <summary><span>05</span> Alfred and Raycast</summary>
           <ul>
-            <li>Search the same private local index from either launcher</li>
+            <li>Search the same on-device contact index from either launcher</li>
             <li>Preview results, copy a preferred detail, start an email or call, and open the selected contact</li>
+            <li>Separate access keys protect the read-only connection to each launcher</li>
             <li>No second contact database and no access to provider credentials</li>
           </ul>
         </details>
@@ -393,7 +394,7 @@
           <summary><span>06</span> Privacy and reliability</summary>
           <ul>
             <li>Offline search and local-first editing that never waits on a network request</li>
-            <li>OAuth credentials in Keychain and provider traffic sent directly to the provider you choose</li>
+            <li>Persistent OAuth credentials in Keychain and encrypted provider traffic sent directly to the provider you choose</li>
             <li>Private iCloud sync for supported app metadata such as smart groups and link decisions</li>
             <li>Light, Dark, and Automatic appearance across Mac, iPhone, and iPad</li>
             <li>No ads, tracking, analytics SDKs, or contact-data sales</li>
@@ -406,12 +407,12 @@
       <div class="launcher-copy reveal">
         <p class="section-kicker light">Raycast + Alfred</p>
         <h2>Take Immediate Action.</h2>
-        <p>Search the same private local index from Raycast or Alfred. Find a person, copy a detail, start an email or call, and open the full contact without breaking your flow.</p>
+        <p>Search the same on-device contact index from Raycast or Alfred. Find a person, copy a detail, start an email or call, and open the full contact without breaking your flow.</p>
         <div class="launcher-switch" aria-label="Choose launcher preview">
           <button type="button" data-launcher-mode="raycast" aria-pressed="true"><img src="assets/raycast-icon.png" alt="">Raycast</button>
           <button type="button" data-launcher-mode="alfred" aria-pressed="false"><img src="assets/alfred-icon.png" alt="">Alfred</button>
         </div>
-        <p class="launcher-privacy"><span>●</span> No second contact database. No provider credentials.</p>
+        <p class="launcher-privacy"><span>●</span> Paired, device-only, read-only access. No second contact database. No provider credentials.</p>
       </div>
       <div class="launcher-stage reveal" data-launcher-demo>
         <div class="launcher-glow" data-parallax="0.34" data-parallax-x="-0.09" data-parallax-rotate="0.014"></div>
@@ -469,10 +470,11 @@
       <div class="privacy-copy reveal" data-parallax="-0.08" data-parallax-x="0.025">
         <p class="section-kicker">Privacy is not an upgrade</p>
         <h2>Your contacts are yours. Full stop.</h2>
-        <p>No ads. No tracking. No sale of contact data. Search happens on your device, credentials stay in the system Keychain, and supported sync connections go directly to Apple, Google, or Microsoft.</p>
+        <p>No ads. No tracking. No sale of contact data. Search happens on your device, persistent OAuth credentials are kept in the system Keychain, and supported sync connections use encrypted, direct provider connections.</p>
         <ul>
           <li>Local search that works offline</li>
           <li>Direct provider connections with no proxy</li>
+          <li>Access-key-protected, device-only, read-only Alfred and Raycast integration</li>
           <li>Durable per-account retry queues</li>
         </ul>
       </div>
@@ -499,7 +501,7 @@
         </details>
         <details>
           <summary>Can I search contacts from Raycast or Alfred?</summary>
-          <p>Yes. Optional Raycast and Alfred integrations search the same private local index. Find a person, copy a detail, start an email or call, and open a contact without leaving your Mac launcher.</p>
+          <p>Yes. Optional, access-key-protected Raycast and Alfred integrations search the same on-device contact index. Find a person, copy a detail, start an email or call, and open a contact without leaving your Mac launcher.</p>
         </details>
       </div>
     </section>
