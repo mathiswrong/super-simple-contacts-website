@@ -402,7 +402,7 @@ body { color: var(--ink); background: #050608; }
 .hero-mark { margin: 0 0 30px; color: #f7f8fb; font-size: 17px; }
 .hero-mark img { width: 54px; height: 54px; border-radius: 14px; animation: none; }
 .hero .eyebrow { margin-right: 0; margin-left: 0; }
-.hero h1 { max-width: none; font-size: clamp(56px, 5vw, 72px); line-height: .93; }
+.hero h1 { max-width: none; font-size: clamp(50px, 5vw, 72px); line-height: .93; }
 .hero-line { display: block; white-space: nowrap; }
 .hero-line-primary { color: #fff; background: none; -webkit-text-fill-color: #fff; }
 .hero .lede { max-width: 650px; margin: 24px 0 0; color: #a8afbf; font-size: clamp(18px, 1.55vw, 21px); }
@@ -530,7 +530,7 @@ footer { border-top: 1px solid rgba(255,255,255,.08); background: #06070a; }
   .hero { min-height: 0; padding: 112px 20px 50px; row-gap: 48px; }
   .hero-mark { margin-bottom: 34px; }
   .hero-mark img { width: 48px; height: 48px; }
-  .hero h1 { font-size: clamp(32px, 10vw, 62px); }
+  .hero h1 { font-size: clamp(28px, 9vw, 62px); }
   .hero-actions { align-items: stretch; }
   .hero-actions .button { width: 100%; }
   .hero-launcher-proof { grid-template-columns: auto 1fr; }
