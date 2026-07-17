@@ -384,7 +384,7 @@ body { color: var(--ink); background: #050608; }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(500px, .94fr) minmax(0, 1.06fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   grid-template-rows: auto auto;
   column-gap: clamp(48px, 5vw, 84px);
   row-gap: 70px;
@@ -402,7 +402,9 @@ body { color: var(--ink); background: #050608; }
 .hero-mark { margin: 0 0 30px; color: #f7f8fb; font-size: 17px; }
 .hero-mark img { width: 54px; height: 54px; border-radius: 14px; animation: none; }
 .hero .eyebrow { margin-right: 0; margin-left: 0; }
-.hero h1 { max-width: 690px; font-size: clamp(64px, 5.6vw, 88px); line-height: .93; }
+.hero h1 { max-width: none; font-size: clamp(56px, 5vw, 72px); line-height: .93; }
+.hero-line { display: block; white-space: nowrap; }
+.hero-line-primary { color: #fff; background: none; -webkit-text-fill-color: #fff; }
 .hero .lede { max-width: 650px; margin: 24px 0 0; color: #a8afbf; font-size: clamp(18px, 1.55vw, 21px); }
 .hero-actions { justify-content: flex-start; margin-top: 27px; }
 .hero .fine-print { margin-top: 15px; color: #687083; }
@@ -533,7 +535,7 @@ footer { border-top: 1px solid rgba(255,255,255,.08); background: #06070a; }
   .hero { min-height: 0; padding: 112px 20px 50px; row-gap: 48px; }
   .hero-mark { margin-bottom: 34px; }
   .hero-mark img { width: 48px; height: 48px; }
-  .hero h1 { font-size: clamp(52px, 15.2vw, 72px); }
+  .hero h1 { font-size: clamp(32px, 10vw, 62px); }
   .hero-actions { align-items: stretch; }
   .hero-actions .button { width: 100%; }
   .hero-launcher-proof { grid-template-columns: auto 1fr; }
@@ -573,7 +575,7 @@ body.is-loading { overflow: hidden; }
 }
 .site-loader.is-complete { opacity: 0; visibility: hidden; pointer-events: none; }
 .site-loader-animation { position: relative; width: min(210px, 54vw); aspect-ratio: 1; filter: drop-shadow(0 20px 55px rgba(0,0,0,.48)); }
-.sync-pulse-logo { position: absolute; z-index: 2; inset: 50% auto auto 50%; width: 98px; height: 98px; border-radius: 23px; transform: translate(-50%, -50%); box-shadow: 0 18px 42px rgba(0,0,0,.44); }
+.sync-pulse-logo { position: absolute; z-index: 2; inset: 50% auto auto 50%; width: 112px; height: 112px; transform: translate(-50%, -50%); filter: drop-shadow(0 0 22px rgba(73,64,236,.38)) drop-shadow(0 14px 26px rgba(0,0,0,.38)); }
 .sync-pulse-ring { position: absolute; z-index: 1; inset: 50% auto auto 50%; width: 116px; height: 116px; border: 3px solid var(--pulse-color); border-radius: 50%; transform: translate(-50%, -50%); opacity: 0; }
 
 .app-store-badge {
@@ -615,32 +617,27 @@ body.is-loading { overflow: hidden; }
   max-width: 610px;
   margin-top: 17px;
 }
-.launcher-badge {
+.launcher-extension {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) auto;
+  grid-template-columns: 42px minmax(0, 1fr);
   gap: 12px;
   align-items: center;
-  min-height: 68px;
-  padding: 11px 13px;
-  border: 1px solid rgba(255,255,255,.11);
-  border-radius: 17px;
-  background: rgba(255,255,255,.045);
-  box-shadow: inset 0 1px rgba(255,255,255,.05);
-  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  width: fit-content;
+  min-height: 54px;
+  cursor: not-allowed;
 }
-.launcher-badge:hover { border-color: rgba(164,151,255,.38); background: rgba(255,255,255,.07); transform: translateY(-2px); }
-.launcher-badge > img { width: 42px; height: 42px; object-fit: contain; }
-.launcher-badge > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
-.launcher-badge small { overflow: hidden; color: #767f90; font-size: 10px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
-.launcher-badge strong { color: #f0f2f7; font-size: 14px; line-height: 1.2; }
-.launcher-badge > span:last-child { color: #8f83ef; font-size: 16px; }
+.launcher-extension > img { width: 42px; height: 42px; object-fit: contain; }
+.launcher-extension > span { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
+.launcher-extension strong { color: #f0f2f7; font-size: 14px; line-height: 1.2; }
+.launcher-extension small { color: #777f90; font-size: 11px; font-weight: 620; line-height: 1.3; white-space: nowrap; }
+.launcher-extension small i { margin-left: 3px; color: #645d9c; font-style: normal; }
 
 .final-cta .app-store-badge { margin-top: 36px; }
 
 @media (max-width: 650px) {
   .hero-actions .app-store-badge { align-self: flex-start; }
   .hero-launcher-badges { grid-template-columns: 1fr; }
-  .launcher-badge { max-width: 360px; }
+  .launcher-extension { max-width: 360px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

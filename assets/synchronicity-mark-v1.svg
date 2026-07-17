@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 18 18" role="img" aria-label="Super Simple Contacts synchronicity mark">
+  <defs>
+    <linearGradient id="spectrum" x1="1.7" y1="9" x2="16.3" y2="9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0672ff"/>
+      <stop offset="0.42" stop-color="#4940ec"/>
+      <stop offset="0.72" stop-color="#9d3edf"/>
+      <stop offset="1" stop-color="#ff5663"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#spectrum)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="9" cy="6" rx="3.05" ry="4.25"/>
+    <ellipse cx="6.75" cy="10.35" rx="3.05" ry="4.25" transform="rotate(60 6.75 10.35)"/>
+    <ellipse cx="11.25" cy="10.35" rx="3.05" ry="4.25" transform="rotate(-60 11.25 10.35)"/>
+  </g>
+</svg>

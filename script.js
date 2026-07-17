@@ -40,14 +40,13 @@ async function playSyncPulse() {
     if (!response.ok) throw new Error("Sync pulse unavailable");
     const animationData = await response.json();
     const duration = Math.min(1600, Math.max(900, (animationData.op - animationData.ip) / animationData.fr * 1000));
-    const logoAsset = animationData.assets?.find(asset => asset.p);
     const pulseLayers = animationData.layers?.filter(layer => layer.nm?.startsWith("Sync Pulse")) || [];
     const logo = document.createElement("img");
     const firstRing = document.createElement("span");
     const secondRing = document.createElement("span");
 
     logo.className = "sync-pulse-logo";
-    logo.src = `assets/${logoAsset?.u || ""}${logoAsset?.p || "app-icon-sync.png"}`;
+    logo.src = "assets/synchronicity-mark-v1.svg";
     logo.alt = "";
     firstRing.className = "sync-pulse-ring";
     secondRing.className = "sync-pulse-ring";
@@ -56,10 +55,11 @@ async function playSyncPulse() {
     syncPulse.replaceChildren(firstRing, secondRing, logo);
 
     const logoAnimation = logo.animate([
-      { opacity: 0, transform: "translate(-50%, -50%) scale(.58)" },
-      { opacity: 1, transform: "translate(-50%, -50%) scale(1.05)", offset: .32 },
-      { opacity: 1, transform: "translate(-50%, -50%) scale(.98)", offset: .54 },
-      { opacity: 1, transform: "translate(-50%, -50%) scale(1)" }
+      { opacity: 0, transform: "translate(-50%, -50%) rotate(-32deg) scale(.72)" },
+      { opacity: 1, transform: "translate(-50%, -50%) rotate(64deg) scale(1.06)", offset: .25 },
+      { opacity: .82, transform: "translate(-50%, -50%) rotate(202deg) scale(.94)", offset: .56 },
+      { opacity: 1, transform: "translate(-50%, -50%) rotate(310deg) scale(1.06)", offset: .84 },
+      { opacity: 1, transform: "translate(-50%, -50%) rotate(360deg) scale(1)" }
     ], { duration, easing: "cubic-bezier(.22,.72,.2,1)", fill: "forwards" });
     const ringAnimations = [firstRing, secondRing].map((ring, index) => ring.animate([
       { opacity: 0, transform: "translate(-50%, -50%) scale(.55)" },
