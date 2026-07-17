@@ -36,7 +36,7 @@ async function playSyncPulse() {
   }
 
   try {
-    const response = await fetch("assets/sync-pulse.json");
+    const response = await fetch("assets/sync-pulse-v2.json");
     if (!response.ok) throw new Error("Sync pulse unavailable");
     const animationData = await response.json();
     const duration = Math.min(1600, Math.max(900, (animationData.op - animationData.ip) / animationData.fr * 1000));
@@ -47,7 +47,7 @@ async function playSyncPulse() {
     const secondRing = document.createElement("span");
 
     logo.className = "sync-pulse-logo";
-    logo.src = `assets/${logoAsset?.u || ""}${logoAsset?.p || "app-icon.png"}`;
+    logo.src = `assets/${logoAsset?.u || ""}${logoAsset?.p || "app-icon-sync.png"}`;
     logo.alt = "";
     firstRing.className = "sync-pulse-ring";
     secondRing.className = "sync-pulse-ring";
@@ -239,7 +239,7 @@ function renderLauncherResults() {
       const avatar = document.createElement(launcherMode === "alfred" ? "img" : "span");
       avatar.className = "launcher-result-avatar";
       if (launcherMode === "alfred") {
-        avatar.src = "assets/app-icon.png";
+        avatar.src = "assets/app-icon-sync.png";
         avatar.alt = "";
       } else {
         avatar.textContent = initials(contact.name);
