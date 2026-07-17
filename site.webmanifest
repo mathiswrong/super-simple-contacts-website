@@ -1,7 +1,7 @@
 {
   "name": "Super Simple Contacts",
   "short_name": "Contacts",
-  "description": "A fast, private contact manager and address book for Mac, iPhone, and iPad with Apple, Google, and Microsoft contact sync.",
+  "description": "A fast, feature-rich Contacts replacement for Mac, iPhone, and iPad with Apple, Google, and Microsoft contact sync.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f5f5f2",

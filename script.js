@@ -10,6 +10,78 @@ const contacts = [
 ];
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const siteLoader = document.querySelector("[data-site-loader]");
+const syncPulse = document.querySelector("[data-sync-pulse]");
+let loaderFinished = false;
+
+function finishSiteLoader() {
+  if (loaderFinished || !siteLoader) return;
+  loaderFinished = true;
+  siteLoader.classList.add("is-complete");
+  document.body.classList.remove("is-loading");
+  window.setTimeout(() => siteLoader.remove(), 420);
+}
+
+function lottieStrokeColor(layer, fallback) {
+  const stroke = layer?.shapes?.flatMap(shape => shape.it || []).find(shape => shape.ty === "st");
+  const color = stroke?.c?.k;
+  if (!Array.isArray(color)) return fallback;
+  return `rgb(${color.slice(0, 3).map(channel => Math.round(channel * 255)).join(", ")})`;
+}
+
+async function playSyncPulse() {
+  if (!siteLoader || !syncPulse || reduceMotion) {
+    window.setTimeout(finishSiteLoader, reduceMotion ? 80 : 500);
+    return;
+  }
+
+  try {
+    const response = await fetch("assets/sync-pulse.json");
+    if (!response.ok) throw new Error("Sync pulse unavailable");
+    const animationData = await response.json();
+    const duration = Math.min(1600, Math.max(900, (animationData.op - animationData.ip) / animationData.fr * 1000));
+    const logoAsset = animationData.assets?.find(asset => asset.p);
+    const pulseLayers = animationData.layers?.filter(layer => layer.nm?.startsWith("Sync Pulse")) || [];
+    const logo = document.createElement("img");
+    const firstRing = document.createElement("span");
+    const secondRing = document.createElement("span");
+
+    logo.className = "sync-pulse-logo";
+    logo.src = `assets/${logoAsset?.u || ""}${logoAsset?.p || "app-icon.png"}`;
+    logo.alt = "";
+    firstRing.className = "sync-pulse-ring";
+    secondRing.className = "sync-pulse-ring";
+    firstRing.style.setProperty("--pulse-color", lottieStrokeColor(pulseLayers[0], "#4250ff"));
+    secondRing.style.setProperty("--pulse-color", lottieStrokeColor(pulseLayers[1], "#ff5663"));
+    syncPulse.replaceChildren(firstRing, secondRing, logo);
+
+    const logoAnimation = logo.animate([
+      { opacity: 0, transform: "translate(-50%, -50%) scale(.58)" },
+      { opacity: 1, transform: "translate(-50%, -50%) scale(1.05)", offset: .32 },
+      { opacity: 1, transform: "translate(-50%, -50%) scale(.98)", offset: .54 },
+      { opacity: 1, transform: "translate(-50%, -50%) scale(1)" }
+    ], { duration, easing: "cubic-bezier(.22,.72,.2,1)", fill: "forwards" });
+    const ringAnimations = [firstRing, secondRing].map((ring, index) => ring.animate([
+      { opacity: 0, transform: "translate(-50%, -50%) scale(.55)" },
+      { opacity: .54 - index * .1, offset: .16, transform: "translate(-50%, -50%) scale(.68)" },
+      { opacity: 0, transform: "translate(-50%, -50%) scale(1.55)" }
+    ], {
+      delay: 100 + index * 330,
+      duration: duration * .68,
+      easing: "cubic-bezier(.2,.7,.2,1)",
+      fill: "forwards"
+    }));
+
+    await Promise.all([logoAnimation.finished, ...ringAnimations.map(animation => animation.finished)]);
+    window.setTimeout(finishSiteLoader, 80);
+  } catch {
+    finishSiteLoader();
+  }
+}
+
+playSyncPulse();
+window.setTimeout(finishSiteLoader, 2200);
+
 const header = document.querySelector("[data-header]");
 const reveals = document.querySelectorAll(".reveal");
 const parallaxItems = [...document.querySelectorAll("[data-parallax]")];

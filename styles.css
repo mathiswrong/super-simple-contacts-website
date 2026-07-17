@@ -374,7 +374,7 @@ footer nav { display: flex; justify-self: end; gap: 22px; }
   background: var(--paper);
 }
 
-html { background: #050608; }
+html { overflow-x: hidden; background: #050608; }
 body { color: var(--ink); background: #050608; }
 .skip-link { color: #fff; background: #151924; }
 .site-header { width: min(1240px, calc(100% - 36px)); border-color: rgba(255,255,255,.1); background: rgba(7,8,12,.78); }
@@ -552,4 +552,97 @@ footer { border-top: 1px solid rgba(255,255,255,.08); background: #06070a; }
   .feature-card, .feature-card-wide { background-color: #0e1117; }
   footer { grid-template-columns: 1fr; padding: 28px 20px; overflow: hidden; }
   footer nav { justify-self: start; flex-wrap: wrap; gap: 18px; }
+}
+
+/* Sync-pulse loader and outbound store badges */
+body.is-loading { overflow: hidden; }
+.site-loader {
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(73,64,236,.2), transparent 22%),
+    radial-gradient(circle at 54% 54%, rgba(255,86,99,.09), transparent 26%),
+    #050608;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .34s ease, visibility .34s ease;
+}
+.site-loader.is-complete { opacity: 0; visibility: hidden; pointer-events: none; }
+.site-loader-animation { position: relative; width: min(210px, 54vw); aspect-ratio: 1; filter: drop-shadow(0 20px 55px rgba(0,0,0,.48)); }
+.sync-pulse-logo { position: absolute; z-index: 2; inset: 50% auto auto 50%; width: 98px; height: 98px; border-radius: 23px; transform: translate(-50%, -50%); box-shadow: 0 18px 42px rgba(0,0,0,.44); }
+.sync-pulse-ring { position: absolute; z-index: 1; inset: 50% auto auto 50%; width: 116px; height: 116px; border: 3px solid var(--pulse-color); border-radius: 50%; transform: translate(-50%, -50%); opacity: 0; }
+
+.app-store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 190px;
+  min-height: 58px;
+  padding: 7px 17px 8px 14px;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 12px;
+  color: #fff;
+  background: #050505;
+  box-shadow: 0 12px 30px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.08);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.app-store-badge:hover { transform: translateY(-2px); border-color: #fff; box-shadow: 0 16px 38px rgba(0,0,0,.42), 0 0 26px rgba(103,82,246,.14); }
+.app-store-badge .apple-glyph { width: 32px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 37px; line-height: 1; text-align: center; }
+.app-store-badge > span:last-child { display: flex; flex-direction: column; align-items: flex-start; }
+.app-store-badge small { margin-bottom: -1px; font-size: 10px; line-height: 1; letter-spacing: .01em; }
+.app-store-badge strong { font-size: 22px; line-height: 1.08; letter-spacing: -.035em; }
+.app-store-badge-large { min-width: 214px; min-height: 64px; }
+.app-store-badge-large strong { font-size: 25px; }
+
+.provider.apple {
+  color: #fff;
+  background: linear-gradient(145deg, #252833, #0d0f14);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 21px;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.11);
+}
+.hero-platforms .provider.apple { font-size: 17px; }
+
+.hero-launcher-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 610px;
+  margin-top: 17px;
+}
+.launcher-badge {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  min-height: 68px;
+  padding: 11px 13px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 17px;
+  background: rgba(255,255,255,.045);
+  box-shadow: inset 0 1px rgba(255,255,255,.05);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.launcher-badge:hover { border-color: rgba(164,151,255,.38); background: rgba(255,255,255,.07); transform: translateY(-2px); }
+.launcher-badge > img { width: 42px; height: 42px; object-fit: contain; }
+.launcher-badge > span:nth-child(2) { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
+.launcher-badge small { overflow: hidden; color: #767f90; font-size: 10px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+.launcher-badge strong { color: #f0f2f7; font-size: 14px; line-height: 1.2; }
+.launcher-badge > span:last-child { color: #8f83ef; font-size: 16px; }
+
+.final-cta .app-store-badge { margin-top: 36px; }
+
+@media (max-width: 650px) {
+  .hero-actions .app-store-badge { align-self: flex-start; }
+  .hero-launcher-badges { grid-template-columns: 1fr; }
+  .launcher-badge { max-width: 360px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader { transition-duration: .01ms !important; }
 }
