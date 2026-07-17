@@ -183,7 +183,7 @@ function renderResults() {
 
 input.addEventListener("input", renderResults);
 document.addEventListener("keydown", event => {
-  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+  if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "f") {
     event.preventDefault();
     input.focus();
     input.select();

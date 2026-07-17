@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Super Simple Contacts</title>
+  <desc id="description">The Super Simple Contacts synchronicity mark and wordmark on a deep black background.</desc>
+  <defs>
+    <radialGradient id="blueGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0672ff" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#0672ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#9d3edf" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#9d3edf" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="coralGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff5663" stop-opacity="0.065"/>
+      <stop offset="1" stop-color="#ff5663" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="spectrum" x1="1.7" y1="9" x2="16.3" y2="9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0672ff"/>
+      <stop offset="0.42" stop-color="#4940ec"/>
+      <stop offset="0.72" stop-color="#9d3edf"/>
+      <stop offset="1" stop-color="#ff5663"/>
+    </linearGradient>
+    <filter id="markGlow" x="-40%" y="-40%" width="180%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0.29 0 0 0 0  0 0.25 0 0 0  0 0 0.93 0 0  0 0 0 .28 0"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="#050608"/>
+  <ellipse cx="505" cy="262" rx="325" ry="255" fill="url(#blueGlow)"/>
+  <ellipse cx="705" cy="276" rx="310" ry="250" fill="url(#violetGlow)"/>
+  <ellipse cx="648" cy="365" rx="270" ry="205" fill="url(#coralGlow)"/>
+  <g transform="translate(509 138) scale(10.1111)" fill="none" stroke="#4940ec" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" opacity="0.32" filter="url(#markGlow)">
+    <ellipse cx="9" cy="6" rx="3.05" ry="4.25"/>
+    <ellipse cx="6.75" cy="10.35" rx="3.05" ry="4.25" transform="rotate(60 6.75 10.35)"/>
+    <ellipse cx="11.25" cy="10.35" rx="3.05" ry="4.25" transform="rotate(-60 11.25 10.35)"/>
+  </g>
+  <g transform="translate(509 138) scale(10.1111)" fill="none" stroke="url(#spectrum)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="9" cy="6" rx="3.05" ry="4.25"/>
+    <ellipse cx="6.75" cy="10.35" rx="3.05" ry="4.25" transform="rotate(60 6.75 10.35)"/>
+    <ellipse cx="11.25" cy="10.35" rx="3.05" ry="4.25" transform="rotate(-60 11.25 10.35)"/>
+  </g>
+  <text x="600" y="438" text-anchor="middle" fill="#f5f7fb" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-3.5">Super Simple Contacts</text>
+</svg>
